@@ -11,16 +11,16 @@ class ActivityAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     raw_id_fields = ('author',)
     date_hierarchy = 'publish'
-    ordering = ('status', 'publish')
-
+    ordering = ('status', 'publish')    
+    filter_horizontal = ('tasks',)
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'author', 'activity', 'publish',   
+    list_display = ('title', 'slug', 'author', 'publish',   
                        'status')
     list_filter = ('status', 'created', 'publish', 'author')
     search_fields = ('title', 'body')
     prepopulated_fields = {'slug': ('title',)}
-    raw_id_fields = ('author', 'activity',)
+    raw_id_fields = ('author', )
     date_hierarchy = 'publish'
     ordering = ('status', 'publish')
