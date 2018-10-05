@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.conf import settings
 
 class PublishedManager(models.Manager): 
     def get_queryset(self): 
@@ -19,6 +20,7 @@ class Task(models.Model):
                                on_delete=models.CASCADE,
                                related_name='user_tasks')     
     body = models.TextField() 
+    image = models.ImageField(upload_to='tasks/%Y/%m/%d/', blank=True)
     publish = models.DateTimeField(default=timezone.now) 
     created = models.DateTimeField(auto_now_add=True) 
     updated = models.DateTimeField(auto_now=True) 
