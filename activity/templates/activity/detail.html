@@ -1,0 +1,11 @@
+{% extends "activity/base.html" %} 
+ 
+{% block title %}{{ activity.title }}{% endblock %} 
+ 
+{% block content %} 
+  <h1>{{ activity.title }}</h1> 
+  <p class="date"> 
+    Published {{ activity.publish }} by {{ activity.author }} 
+  </p> 
+  {{ activity.body|linebreaks }} 
+{% endblock %}

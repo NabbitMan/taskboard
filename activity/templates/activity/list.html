@@ -1,0 +1,19 @@
+{% extends "activity/base.html" %}
+ 
+{% block title %}My Activities{% endblock %}
+ 
+{% block content %}
+  <h1>My Activities</h1>
+  {% for activity in activities %}
+    <h2>
+      <a href="{{ activity.get_absolute_url }}">
+        {{ activity.title }}
+      </a>
+    </h2>
+    <p class="date">
+      Published {{ activity.publish }} by {{ activity.author }}
+    </p>
+    {{ activity.body|truncatewords:30|linebreaks }}
+  {% endfor %}
+  {% include "pagination.html" with page=page_obj %}
+{% endblock %}
